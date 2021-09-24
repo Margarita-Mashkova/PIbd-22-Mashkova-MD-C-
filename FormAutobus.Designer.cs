@@ -35,12 +35,13 @@ namespace MashkovaCar
             this.buttonLeft = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.pictureBoxAutobus = new System.Windows.Forms.PictureBox();
+            this.buttonCreateModern = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAutobus)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(677, 469);
+            this.buttonCreate.Location = new System.Drawing.Point(581, 469);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(112, 46);
             this.buttonCreate.TabIndex = 1;
@@ -100,13 +101,23 @@ namespace MashkovaCar
             this.pictureBoxAutobus.Size = new System.Drawing.Size(1023, 536);
             this.pictureBoxAutobus.TabIndex = 0;
             this.pictureBoxAutobus.TabStop = false;
-            this.pictureBoxAutobus.Click += new System.EventHandler(this.pictureBoxAutobus_Click);
+            // 
+            // buttonCreateModern
+            // 
+            this.buttonCreateModern.Location = new System.Drawing.Point(704, 469);
+            this.buttonCreateModern.Name = "buttonCreateModern";
+            this.buttonCreateModern.Size = new System.Drawing.Size(112, 46);
+            this.buttonCreateModern.TabIndex = 6;
+            this.buttonCreateModern.Text = "Создать модерн";
+            this.buttonCreateModern.UseVisualStyleBackColor = true;
+            this.buttonCreateModern.Click += new System.EventHandler(this.buttonCreateModern_Click);
             // 
             // FormAutobus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 536);
+            this.Controls.Add(this.buttonCreateModern);
             this.Controls.Add(this.buttonDown);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonLeft);
@@ -129,6 +140,7 @@ namespace MashkovaCar
 		private System.Windows.Forms.Button buttonLeft;
 		private System.Windows.Forms.Button buttonRight;
 		private System.Windows.Forms.Button buttonDown;
-	}
+        private System.Windows.Forms.Button buttonCreateModern;
+    }
 }
 
