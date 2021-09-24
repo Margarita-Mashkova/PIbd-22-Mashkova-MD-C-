@@ -9,7 +9,6 @@ namespace MashkovaCar
 {
 	class Autobus
 	{
-		//aaa
 		private float _startPosX; /// Левая координата отрисовки автобуса
 		private float _startPosY;/// Правая кооридната отрисовки автобуса
 		private int _pictureWidth;/// Ширина окна отрисовки
