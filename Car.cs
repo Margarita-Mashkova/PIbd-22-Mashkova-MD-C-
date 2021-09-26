@@ -60,7 +60,6 @@ namespace MashkovaCar
 					break;
 			}
 		}
-
 		public override void DrawTransport(Graphics g)
 		{
 			Pen pen = new Pen(MainColor);
