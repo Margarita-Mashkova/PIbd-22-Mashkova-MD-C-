@@ -12,7 +12,7 @@ namespace MashkovaCar
 {
 	public partial class FormAutobus : Form
 	{
-		private Autobus bus;
+		private ITransport bus;
 		public FormAutobus()
 		{
 			InitializeComponent();
@@ -27,8 +27,7 @@ namespace MashkovaCar
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rnd = new Random();
-			bus = new Autobus();
-			bus.Init(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Red, Color.Gray, true, true, true); 
+			bus = new Car(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue);
 			bus.SetPosition(rnd.Next(10, 400), rnd.Next(10, 100), pictureBoxAutobus.Width, pictureBoxAutobus.Height);
 			Draw();
 		}
@@ -85,5 +84,13 @@ namespace MashkovaCar
 			}
 			Draw();
 		}
-    }
+
+   		private void buttonCreateModern_Click(object sender, EventArgs e)
+		{
+			Random rnd = new Random();
+			bus = new Autobus(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.Blue, Color.Red, true, true, true);
+			bus.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxAutobus.Width, pictureBoxAutobus.Height);
+			Draw();
+		}
+	}
 }
