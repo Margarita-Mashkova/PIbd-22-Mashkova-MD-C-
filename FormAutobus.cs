@@ -13,7 +13,6 @@ namespace MashkovaCar
 	public partial class FormAutobus : Form
 	{
 		private ITransport bus;
-
 		public FormAutobus()
 		{
 			InitializeComponent();
