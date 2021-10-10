@@ -100,7 +100,6 @@ namespace MashkovaCar
             this.pictureBoxAutobus.Size = new System.Drawing.Size(1023, 536);
             this.pictureBoxAutobus.TabIndex = 0;
             this.pictureBoxAutobus.TabStop = false;
-            this.pictureBoxAutobus.Click += new System.EventHandler(this.pictureBoxAutobus_Click);
             // 
             // FormAutobus
             // 

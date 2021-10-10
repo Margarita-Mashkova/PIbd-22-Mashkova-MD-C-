@@ -13,7 +13,6 @@ namespace MashkovaCar
 	public partial class FormAutobus : Form
 	{
 		private Autobus bus;
-
 		public FormAutobus()
 		{
 			InitializeComponent();
@@ -86,10 +85,5 @@ namespace MashkovaCar
 			}
 			Draw();
 		}
-
-        private void pictureBoxAutobus_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
