@@ -13,7 +13,7 @@ namespace MashkovaCar
 		public bool FirstVagon { private set; get; }/// Признак наличия первого вагона
 		public bool SecondVagon { private set; get; }  /// Признак наличия второго вагона
 		public bool Garmoshka { private set; get; }/// Признак наличия гармошки
-		public AutobusModern(int maxSpeed, float weight, Color mainColor, Color dopColor, bool firstVagon, bool secondVagon, bool garmoshka) : base(maxSpeed, weight, mainColor, 190*2+30, 70)
+		public AutobusModern(int maxSpeed, float weight, Color mainColor, Color dopColor, bool firstVagon, bool secondVagon, bool garmoshka) : base(maxSpeed, weight, mainColor, 190 * 2 + 30, 70)
 		{
 			DopColor = dopColor;
 			FirstVagon = firstVagon;

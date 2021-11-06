@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Autobus.cs" />
     <Compile Include="AutobusModern.cs" />
+    <Compile Include="BusStationCollection.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="FormAutobus.cs">
       <SubType>Form</SubType>
@@ -55,22 +56,22 @@
     <Compile Include="FormAutobus.designer.cs">
       <DependentUpon>FormAutobus.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormParking.cs">
+    <Compile Include="FormBusStation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormParking.designer.cs">
-      <DependentUpon>FormParking.cs</DependentUpon>
+    <Compile Include="FormBusStation.designer.cs">
+      <DependentUpon>FormBusStation.cs</DependentUpon>
     </Compile>
     <Compile Include="ITransport.cs" />
-    <Compile Include="Parking.cs" />
+    <Compile Include="BusStation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
     <EmbeddedResource Include="FormAutobus.resx">
       <DependentUpon>FormAutobus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormParking.resx">
-      <DependentUpon>FormParking.cs</DependentUpon>
+    <EmbeddedResource Include="FormBusStation.resx">
+      <DependentUpon>FormBusStation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
