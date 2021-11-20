@@ -15,7 +15,7 @@ namespace MashkovaCar
 		private readonly int _maxCount; /// Максимальное количество мест на парковке автовокзала
 		private readonly int pictureWidth;/// Ширина окна отрисовки
 		private readonly int pictureHeight;/// Высота окна отрисовки
-		private readonly int _placeSizeWidth = 210+230;/// Размер парковочного места (ширина)
+		private readonly int _placeSizeWidth = 210 + 230;/// Размер парковочного места (ширина)
 		private readonly int _placeSizeHeight = 100;/// Размер парковочного места (высота)
 		/// Конструктор
 		public BusStation(int picWidth, int picHeight)
@@ -83,7 +83,7 @@ namespace MashkovaCar
 			{
 				for (int j = 0; j < pictureHeight / _placeSizeHeight + 1; ++j)
 				{//линия рамзетки места
-					g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + _placeSizeWidth /2, j * _placeSizeHeight);
+					g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + _placeSizeWidth / 2, j * _placeSizeHeight);
 				}
 				g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
 			}
