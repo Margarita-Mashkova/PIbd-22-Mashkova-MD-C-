@@ -20,6 +20,22 @@ namespace MashkovaCar
 			SecondVagon = secondVagon;
 			Garmoshka = garmoshka;
 		}
+		/// Конструктор для загрузки с файла
+		public AutobusModern(string info) : base(info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 7)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromName(strs[2]);
+				DopColor = Color.FromName(strs[3]);
+				FirstVagon = Convert.ToBoolean(strs[4]);
+				SecondVagon = Convert.ToBoolean(strs[5]);
+				Garmoshka = Convert.ToBoolean(strs[6]);
+			}
+		}
+
 		/// Отрисовка автомобиля
 		public override void DrawTransport(Graphics g)
 		{
@@ -64,6 +80,10 @@ namespace MashkovaCar
 		public void SetDopColor(Color color)
 		{
 			DopColor = color;
+		}
+		public override string ToString()
+		{
+			return $"{base.ToString()}{separator}{DopColor.Name}{separator}{FirstVagon}{separator}{SecondVagon}{separator}{Garmoshka}";
 		}
 	}
 }
