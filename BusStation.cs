@@ -28,7 +28,7 @@ namespace MashkovaCar
 			_places = new List<T>();
 		}
 		/// Перегрузка оператора сложения
-		/// Логика действия: на парковку добавляется автомобиль
+		/// Логика действия: на парковку добавляется автобус
 		public static int operator +(BusStation<T> p, T autobus)
 		{
 			if (p._maxCount == p._places.Count)
@@ -42,7 +42,7 @@ namespace MashkovaCar
 			}
 		}
 		/// Перегрузка оператора вычитания
-		/// Логика действия: с парковки забираем автомобиль
+		/// Логика действия: с парковки забираем автобус
 		public static T operator -(BusStation<T> p, int index)
 		{
 			if (index < p._places.Count || index > 0)
