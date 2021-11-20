@@ -66,50 +66,6 @@ namespace MashkovaCar
 				}
 			}
 		}
-		/// Обработка нажатия кнопки "Припарковать автобус"
-		private void buttonSetAutobus_Click(object sender, EventArgs e)
-		{
-			if (listBoxBusStations.SelectedIndex > -1)
-			{
-				ColorDialog dialog = new ColorDialog();
-				if (dialog.ShowDialog() == DialogResult.OK)
-				{
-					var bus = new Autobus(100, 1000, dialog.Color);
-					if (busStationCollection[listBoxBusStations.SelectedItem.ToString()] + bus >= 0)
-					{
-						Draw();
-					}
-					else
-					{
-						MessageBox.Show("Автовокзал переполнен");
-					}
-				}
-			}
-        }
-		/// Обработка нажатия кнопки "Припарковать автобус с гармошкой"
-		private void buttonSetAutobusModern_Click(object sender, EventArgs e)
-		{
-			if (listBoxBusStations.SelectedIndex > -1)
-			{
-				ColorDialog dialog = new ColorDialog();
-				if (dialog.ShowDialog() == DialogResult.OK)
-				{
-					ColorDialog dialogDop = new ColorDialog();
-					if (dialogDop.ShowDialog() == DialogResult.OK)
-					{
-						var bus = new AutobusModern(100, 1000, dialog.Color, dialogDop.Color, true, true, true);
-						if (busStationCollection[listBoxBusStations.SelectedItem.ToString()] + bus >= 0)
-						{
-							Draw();
-						}
-						else
-						{
-							MessageBox.Show("Автовокзал переполнен");
-						}
-					}
-				}
-			}
-		}
 		/// Обработка нажатия кнопки "Забрать"
 		private void buttonTake_Click(object sender, EventArgs e)
 		{
@@ -130,5 +86,34 @@ namespace MashkovaCar
 		{
 			Draw();
 		}
-    }
+		/// Обработка нажатия кнопки "Добавить автобус"
+		private void buttonSetAutobus_Click(object sender, EventArgs e)
+		{
+			if (busStationCollection.Keys.Count > 0)
+			{
+				var formAutobusConfig = new FormAutobusConfig();
+				formAutobusConfig.AddEvent(AddAutobus);
+				formAutobusConfig.Show();
+			}
+			else 
+			{
+				MessageBox.Show("Сначала создайте вокзал!");
+			}
+
+		}
+		private void AddAutobus(Vehicle bus) 
+		{
+			if (bus != null && listBoxBusStations.SelectedIndex > -1)
+			{
+				if ((busStationCollection[listBoxBusStations.SelectedItem.ToString()]) + bus >= 0)
+				{
+					Draw();
+				}
+				else
+				{
+					MessageBox.Show("Автобус не удалось поставить");
+				}
+			}
+		}
+	}
 }

@@ -31,7 +31,6 @@ namespace MashkovaCar
 		{
             this.pictureBoxParking = new System.Windows.Forms.PictureBox();
             this.buttonSetAutobus = new System.Windows.Forms.Button();
-            this.buttonSetAutobusModern = new System.Windows.Forms.Button();
             this.groupBoxTakeAutobus = new System.Windows.Forms.GroupBox();
             this.buttonTake = new System.Windows.Forms.Button();
             this.maskedTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -55,23 +54,13 @@ namespace MashkovaCar
             // 
             // buttonSetAutobus
             // 
-            this.buttonSetAutobus.Location = new System.Drawing.Point(1392, 305);
+            this.buttonSetAutobus.Location = new System.Drawing.Point(1392, 300);
             this.buttonSetAutobus.Name = "buttonSetAutobus";
-            this.buttonSetAutobus.Size = new System.Drawing.Size(143, 23);
+            this.buttonSetAutobus.Size = new System.Drawing.Size(143, 48);
             this.buttonSetAutobus.TabIndex = 1;
-            this.buttonSetAutobus.Text = "Припарковать автобус";
+            this.buttonSetAutobus.Text = "Добавить автобус";
             this.buttonSetAutobus.UseVisualStyleBackColor = true;
             this.buttonSetAutobus.Click += new System.EventHandler(this.buttonSetAutobus_Click);
-            // 
-            // buttonSetAutobusModern
-            // 
-            this.buttonSetAutobusModern.Location = new System.Drawing.Point(1392, 334);
-            this.buttonSetAutobusModern.Name = "buttonSetAutobusModern";
-            this.buttonSetAutobusModern.Size = new System.Drawing.Size(143, 37);
-            this.buttonSetAutobusModern.TabIndex = 2;
-            this.buttonSetAutobusModern.Text = "Припарковать автобус с гармошкой";
-            this.buttonSetAutobusModern.UseVisualStyleBackColor = true;
-            this.buttonSetAutobusModern.Click += new System.EventHandler(this.buttonSetAutobusModern_Click);
             // 
             // groupBoxTakeAutobus
             // 
@@ -170,7 +159,6 @@ namespace MashkovaCar
             this.Controls.Add(this.labelBusStation);
             this.Controls.Add(this.listBoxBusStations);
             this.Controls.Add(this.groupBoxTakeAutobus);
-            this.Controls.Add(this.buttonSetAutobusModern);
             this.Controls.Add(this.buttonSetAutobus);
             this.Controls.Add(this.pictureBoxParking);
             this.Name = "FormBusStation";
@@ -188,7 +176,6 @@ namespace MashkovaCar
 
 		private System.Windows.Forms.PictureBox pictureBoxParking;
 		private System.Windows.Forms.Button buttonSetAutobus;
-		private System.Windows.Forms.Button buttonSetAutobusModern;
 		private System.Windows.Forms.GroupBox groupBoxTakeAutobus;
 		private System.Windows.Forms.Label labelPlace;
 		private System.Windows.Forms.Button buttonTake;

@@ -13,7 +13,7 @@ namespace MashkovaCar
 		public bool FirstVagon { private set; get; }/// Признак наличия первого вагона
 		public bool SecondVagon { private set; get; }  /// Признак наличия второго вагона
 		public bool Garmoshka { private set; get; }/// Признак наличия гармошки
-		public AutobusModern(int maxSpeed, float weight, Color mainColor, Color dopColor, bool firstVagon, bool secondVagon, bool garmoshka) : base(maxSpeed, weight, mainColor, 190 * 2 + 30, 70)
+		public AutobusModern(int maxSpeed, float weight, Color mainColor, Color dopColor, bool firstVagon, bool secondVagon, bool garmoshka) : base(maxSpeed, weight, mainColor, 410, 70)
 		{
 			DopColor = dopColor;
 			FirstVagon = firstVagon;
@@ -59,6 +59,11 @@ namespace MashkovaCar
 				g.FillEllipse(fill, _startPosX + 190 - 20 - 25 + 190 + lengthG, _startPosY + 60 - 10, 25, 25);//заливка
 				g.DrawEllipse(pen2, _startPosX + 190 - 20 - 25 + 190 + lengthG, _startPosY + 60 - 10, 25, 25);//переднее
 			}
+		}
+		//Смена дополнительного цвета
+		public void SetDopColor(Color color)
+		{
+			DopColor = color;
 		}
 	}
 }
