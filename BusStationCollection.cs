@@ -14,7 +14,7 @@ namespace MashkovaCar
 		private readonly int pictureWidth;  /// Ширина окна отрисовки
 		private readonly int pictureHeight; /// Высота окна отрисовки
 		private readonly char separator = ':'; /// Разделитель для записи информации в файл
-											   /// Конструктор
+		/// Конструктор
 		public BusStationCollection(int pictureWidth, int pictureHeight)
 		{
 			busStationStages = new Dictionary<string, BusStation<Vehicle>>();
@@ -56,7 +56,7 @@ namespace MashkovaCar
 		/// <param name="filename">Путь и имя файла</param>
 		public bool SaveData(string filename)
 		{
-			if (File.Exists(filename))
+			if(File.Exists(filename))
 			{
 				File.Delete(filename);
 			}
