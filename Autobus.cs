@@ -11,11 +11,23 @@ namespace MashkovaCar
 	{
 		private readonly int carWidth = 190;/// Ширина отрисовки автобуса
 		private readonly int carHeight = 70;/// Высота отрисовки автобуса
+		protected static readonly char separator = ';';/// Разделитель для записи информации по объекту в файл
 		public Autobus(int maxSpeed, float weight, Color mainColor)
 		{
 			MaxSpeed = maxSpeed;
 			Weight = weight;
 			MainColor = mainColor;
+		}
+		/// Конструктор для загрузки с файла
+		public Autobus(string info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 3)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromName(strs[2]);
+			}
 		}
 		protected Autobus(int maxSpeed, float weight, Color mainColor, int carWidth, int carHeight)
 		{
@@ -60,6 +72,7 @@ namespace MashkovaCar
 					break;
 			}
 		}
+
 		public override void DrawTransport(Graphics g)
 		{
 			Pen pen = new Pen(MainColor);
@@ -81,6 +94,10 @@ namespace MashkovaCar
 			g.DrawEllipse(pen, _startPosX + 20, _startPosY + 50, 25, 25); //заднее
 			g.FillEllipse(fill, _startPosX + 190 - 20 - 25, _startPosY + 50, 25, 25);//заливка
 			g.DrawEllipse(pen, _startPosX + 190 - 20 - 25, _startPosY + 50, 25, 25);//переднее
+		}
+		public override string ToString()
+		{
+			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
 		}
 	}
 }

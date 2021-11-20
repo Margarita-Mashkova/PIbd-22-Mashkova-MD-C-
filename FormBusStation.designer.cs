@@ -40,13 +40,20 @@ namespace MashkovaCar
             this.textBoxBusStationName = new System.Windows.Forms.TextBox();
             this.buttonAddBusStation = new System.Windows.Forms.Button();
             this.buttonDelBusStation = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxTakeAutobus.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxParking
             // 
-            this.pictureBoxParking.Location = new System.Drawing.Point(5, 10);
+            this.pictureBoxParking.Location = new System.Drawing.Point(0, 27);
             this.pictureBoxParking.Name = "pictureBoxParking";
             this.pictureBoxParking.Size = new System.Drawing.Size(1349, 678);
             this.pictureBoxParking.TabIndex = 0;
@@ -54,7 +61,7 @@ namespace MashkovaCar
             // 
             // buttonSetAutobus
             // 
-            this.buttonSetAutobus.Location = new System.Drawing.Point(1392, 300);
+            this.buttonSetAutobus.Location = new System.Drawing.Point(1393, 338);
             this.buttonSetAutobus.Name = "buttonSetAutobus";
             this.buttonSetAutobus.Size = new System.Drawing.Size(143, 48);
             this.buttonSetAutobus.TabIndex = 1;
@@ -67,7 +74,7 @@ namespace MashkovaCar
             this.groupBoxTakeAutobus.Controls.Add(this.buttonTake);
             this.groupBoxTakeAutobus.Controls.Add(this.maskedTextBox);
             this.groupBoxTakeAutobus.Controls.Add(this.labelPlace);
-            this.groupBoxTakeAutobus.Location = new System.Drawing.Point(1392, 379);
+            this.groupBoxTakeAutobus.Location = new System.Drawing.Point(1393, 417);
             this.groupBoxTakeAutobus.Name = "groupBoxTakeAutobus";
             this.groupBoxTakeAutobus.Size = new System.Drawing.Size(142, 95);
             this.groupBoxTakeAutobus.TabIndex = 3;
@@ -106,7 +113,7 @@ namespace MashkovaCar
             // listBoxBusStations
             // 
             this.listBoxBusStations.FormattingEnabled = true;
-            this.listBoxBusStations.Location = new System.Drawing.Point(1392, 81);
+            this.listBoxBusStations.Location = new System.Drawing.Point(1393, 119);
             this.listBoxBusStations.Name = "listBoxBusStations";
             this.listBoxBusStations.Size = new System.Drawing.Size(143, 160);
             this.listBoxBusStations.TabIndex = 4;
@@ -115,7 +122,7 @@ namespace MashkovaCar
             // labelBusStation
             // 
             this.labelBusStation.AutoSize = true;
-            this.labelBusStation.Location = new System.Drawing.Point(1426, 9);
+            this.labelBusStation.Location = new System.Drawing.Point(1427, 47);
             this.labelBusStation.Name = "labelBusStation";
             this.labelBusStation.Size = new System.Drawing.Size(78, 13);
             this.labelBusStation.TabIndex = 5;
@@ -123,14 +130,14 @@ namespace MashkovaCar
             // 
             // textBoxBusStationName
             // 
-            this.textBoxBusStationName.Location = new System.Drawing.Point(1392, 26);
+            this.textBoxBusStationName.Location = new System.Drawing.Point(1393, 64);
             this.textBoxBusStationName.Name = "textBoxBusStationName";
             this.textBoxBusStationName.Size = new System.Drawing.Size(143, 20);
             this.textBoxBusStationName.TabIndex = 6;
             // 
             // buttonAddBusStation
             // 
-            this.buttonAddBusStation.Location = new System.Drawing.Point(1392, 52);
+            this.buttonAddBusStation.Location = new System.Drawing.Point(1393, 90);
             this.buttonAddBusStation.Name = "buttonAddBusStation";
             this.buttonAddBusStation.Size = new System.Drawing.Size(143, 23);
             this.buttonAddBusStation.TabIndex = 7;
@@ -140,7 +147,7 @@ namespace MashkovaCar
             // 
             // buttonDelBusStation
             // 
-            this.buttonDelBusStation.Location = new System.Drawing.Point(1392, 246);
+            this.buttonDelBusStation.Location = new System.Drawing.Point(1393, 284);
             this.buttonDelBusStation.Name = "buttonDelBusStation";
             this.buttonDelBusStation.Size = new System.Drawing.Size(143, 23);
             this.buttonDelBusStation.TabIndex = 8;
@@ -148,11 +155,53 @@ namespace MashkovaCar
             this.buttonDelBusStation.UseVisualStyleBackColor = true;
             this.buttonDelBusStation.Click += new System.EventHandler(this.buttonDelBusStation_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1562, 24);
+            this.menuStrip.TabIndex = 9;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // файлToolStripMenuItem
+            // 
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьToolStripMenuItem,
+            this.загрузитьToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // сохранитьToolStripMenuItem
+            // 
+            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            // 
+            // загрузитьToolStripMenuItem
+            // 
+            this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Text = "Загрузить";
+            this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "txt file | *.txt";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "txt file | *.txt";
+            // 
             // FormBusStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1562, 692);
+            this.ClientSize = new System.Drawing.Size(1562, 712);
             this.Controls.Add(this.buttonDelBusStation);
             this.Controls.Add(this.buttonAddBusStation);
             this.Controls.Add(this.textBoxBusStationName);
@@ -161,12 +210,16 @@ namespace MashkovaCar
             this.Controls.Add(this.groupBoxTakeAutobus);
             this.Controls.Add(this.buttonSetAutobus);
             this.Controls.Add(this.pictureBoxParking);
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "FormBusStation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Парковка";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).EndInit();
             this.groupBoxTakeAutobus.ResumeLayout(false);
             this.groupBoxTakeAutobus.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +238,11 @@ namespace MashkovaCar
 		private System.Windows.Forms.TextBox textBoxBusStationName;
 		private System.Windows.Forms.Button buttonAddBusStation;
 		private System.Windows.Forms.Button buttonDelBusStation;
-	}
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+    }
 }
