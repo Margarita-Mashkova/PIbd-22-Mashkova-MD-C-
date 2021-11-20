@@ -56,7 +56,7 @@ namespace MashkovaCar
 		/// <param name="filename">Путь и имя файла</param>
 		public bool SaveData(string filename)
 		{
-			if(File.Exists(filename))
+			if (File.Exists(filename))
 			{
 				File.Delete(filename);
 			}
