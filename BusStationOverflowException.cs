@@ -8,7 +8,6 @@ namespace MashkovaCar
 {
     public class BusStationOverflowException : Exception
     {
-        public BusStationOverflowException() : base("На автовокзале нет свободных мест")
-        { }
+        public BusStationOverflowException() : base("На автовокзале нет свободных мест"){}
     }
 }
