@@ -54,7 +54,7 @@ namespace MashkovaCar
 		}
 		/// Сохранение информации по автомбусам на автовокзалах в файл
 		/// <param name="filename">Путь и имя файла</param>
-		public bool SaveData(string filename)
+		public void SaveData(string filename)
 		{
 			if (File.Exists(filename))
 			{
@@ -62,11 +62,11 @@ namespace MashkovaCar
 			}
 			using (StreamWriter sw = new StreamWriter(filename, false, Encoding.UTF8))
 			{
-				sw.Write($"ParkingCollection{Environment.NewLine}");
+				sw.Write($"BusStationCollection{Environment.NewLine}");
 				foreach (var level in busStationStages)
 				{
 					//Начинаем парковку
-					sw.Write($"Parking{separator}{level.Key}{Environment.NewLine}");
+					sw.Write($"BusStation{separator}{level.Key}{Environment.NewLine}");
 					ITransport bus = null;
 					for (int i = 0; (bus = level.Value.GetNext(i)) != null; i++)
 					{
@@ -88,19 +88,18 @@ namespace MashkovaCar
 					}
 				}
 			}
-			return true;
 		}
 		/// Загрузка нформации по автобусам на автовокзалах из файла
-		public bool LoadData(string filename)
+		public void LoadData(string filename)
 		{
 			if (!File.Exists(filename))
 			{
-				return false;
+				throw new FileNotFoundException();
 			}
 			using (StreamReader sr = new StreamReader(filename, Encoding.UTF8))
 			{
 				string strs = sr.ReadLine();
-				if (strs.Contains("ParkingCollection"))
+				if (strs.Contains("BusStationCollection"))
 				{
 					//очищаем записи
 					busStationStages.Clear();
@@ -108,14 +107,14 @@ namespace MashkovaCar
 				else
 				{
 					//если нет такой записи, то это не те данные
-					return false;
+					throw new FormatException("Неверный формат файла");
 				}
 				Vehicle bus = null;
 				string key = string.Empty;
 				while ((strs = sr.ReadLine()) != null)
 				{
 					//идем по считанным записям
-					if (strs.Contains("Parking"))
+					if (strs.Contains("BusStation"))
 					{//начинаем новую парковку
 						key = strs.Split(separator)[1];
 						busStationStages.Add(key, new BusStation<Vehicle>(pictureWidth, pictureHeight));
@@ -136,10 +135,9 @@ namespace MashkovaCar
 					var result = busStationStages[key] + bus;
 					if (result < 0)
 					{
-						return false;
+						throw new TypeLoadException("Не удалось загрузить автобус на автовокзал");
 					}
 				}
-				return true;
 			}
 		}
 	}

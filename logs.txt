@@ -1,0 +1,8 @@
+﻿2021-12-04 13:49:06.5736|INFO|MashkovaCar.FormBusStation|Загружено из файла F:\2 курс\Технологии программирования\vokzaloverflow.txt
+2021-12-04 13:49:06.6196|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал Московский
+2021-12-04 13:49:09.7508|WARN|MashkovaCar.FormBusStation|Попытались поставить автобус в заполненный автовокзал
+2021-12-04 13:49:15.3781|WARN|MashkovaCar.FormBusStation|Попытались взять автобус с несуществующего места на автовокзале Московский
+2021-12-04 13:49:18.1413|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал Ульяновский
+2021-12-04 13:49:24.6057|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;ffff8000
+2021-12-04 13:49:34.7362|INFO|MashkovaCar.FormBusStation|Добавлен автобус 103;100;Purple;Cyan;True;True;True
+2021-12-04 13:49:42.6047|INFO|MashkovaCar.FormBusStation|Изъят автобус 100;100;Red с места 0
