@@ -31,9 +31,9 @@ namespace MashkovaCar
 		/// Логика действия: на парковку добавляется автобус
 		public static int operator +(BusStation<T> p, T autobus)
 		{
-			if (p._maxCount == p._places.Count)
+			if (p._places.Count >= p._maxCount)
 			{
-				return -1;
+				throw new BusStationOverflowException();
 			}
 			else
 			{
@@ -45,24 +45,15 @@ namespace MashkovaCar
 		/// Логика действия: с парковки забираем автобус
 		public static T operator -(BusStation<T> p, int index)
 		{
-			if (index < p._places.Count || index > 0)
+			if ((index < p._places.Count) && (index >= 0))
 			{
-				if (p._places[index] != null)
-				{
-					T temp = p._places[index];
-					p._places.Remove(p._places[index]);
-					return temp;
-				}
-				else
-				{
-					MessageBox.Show("Данное парковочное место пустое!");
-					return null;
-				}
+				T temp = p._places[index];
+				p._places.Remove(p._places[index]);
+				return temp;
 			}
 			else
 			{
-				MessageBox.Show("Такого места на парковке не существует!");
-				return null;
+				throw new BusStationNotFoundException(index);
 			}
 		}
 		/// Метод отрисовки автобусов на парковке автовокзала

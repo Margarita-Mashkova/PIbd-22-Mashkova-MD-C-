@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NLog;
+using System;
+using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,10 +9,12 @@ namespace MashkovaCar
 	public partial class FormBusStation : Form
 	{
 		private readonly BusStationCollection busStationCollection; /// Объект от класса-коллекции парковок
+		private readonly Logger logger; //Логгер
 		public FormBusStation()
 		{
 			InitializeComponent();
 			busStationCollection = new BusStationCollection(pictureBoxParking.Width, pictureBoxParking.Height);
+			logger = LogManager.GetCurrentClassLogger();
 		}
 		/// Заполнение listBoxLevels
 		private void ReloadLevels()
@@ -51,6 +55,7 @@ namespace MashkovaCar
 				MessageBox.Show("Введите название автовокзала", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
+			logger.Info($"Добавили автовокзал {textBoxBusStationName.Text}");
 			busStationCollection.AddBusStation(textBoxBusStationName.Text);
 			ReloadLevels();
 		}
@@ -59,8 +64,9 @@ namespace MashkovaCar
 		{
 			if (listBoxBusStations.SelectedIndex > -1)
 			{
-				if (MessageBox.Show($"Удалить автовокзал {textBoxBusStationName.Text}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+				if (MessageBox.Show($"Удалить автовокзал {listBoxBusStations.SelectedItem.ToString()}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 				{
+					logger.Info($"Удалили автовокзал {listBoxBusStations.SelectedItem.ToString()}");
 					busStationCollection.DelBusStation(textBoxBusStationName.Text);
 					ReloadLevels();
 				}
@@ -71,19 +77,33 @@ namespace MashkovaCar
 		{
 			if (listBoxBusStations.SelectedIndex > -1 && maskedTextBox.Text != "")
 			{
-				var bus = busStationCollection[listBoxBusStations.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
-				if (bus != null)
+				try
 				{
-					FormAutobus form = new FormAutobus();
-					form.SetBus(bus);
-					form.ShowDialog();
+					var bus = busStationCollection[listBoxBusStations.SelectedItem.ToString()] - Convert.ToInt32(maskedTextBox.Text);
+					if (bus != null)
+					{
+						FormAutobus form = new FormAutobus();
+						form.SetBus(bus);
+						form.ShowDialog();
+						logger.Info($"Изъят автобус {bus} с места {maskedTextBox.Text}");
+					}
+					Draw();
 				}
-				Draw();
+				catch (BusStationNotFoundException ex)
+				{
+					logger.Warn($"Попытались взять автобус с несуществующего места на автовокзале {listBoxBusStations.SelectedItem.ToString()}");
+					MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 		}
 		/// Метод обработки выбора элемента на listBoxLevels
 		private void listBoxBusStation_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			logger.Info($"Перешли на автовокзал {listBoxBusStations.SelectedItem.ToString()}");
 			Draw();
 		}
 		/// Обработка нажатия кнопки "Добавить автобус"
@@ -95,57 +115,95 @@ namespace MashkovaCar
 				formAutobusConfig.AddEvent(AddAutobus);
 				formAutobusConfig.Show();
 			}
-			else 
+			else
 			{
 				MessageBox.Show("Сначала создайте вокзал!");
 			}
-
 		}
-		private void AddAutobus(Vehicle bus) 
+		/// Метод добавления автобуса
+		private void AddAutobus(Vehicle bus)
 		{
 			if (bus != null && listBoxBusStations.SelectedIndex > -1)
 			{
-				if ((busStationCollection[listBoxBusStations.SelectedItem.ToString()]) + bus >= 0)
+				try
 				{
+					if ((busStationCollection[listBoxBusStations.SelectedItem.ToString()]) + bus >= 0)
+					{
+						Draw();
+						logger.Info($"Добавлен автобус {bus}");
+					}
+					else
+					{
+						MessageBox.Show("Автобус не удалось поставить");
+					}
 					Draw();
 				}
-				else
+				catch (BusStationOverflowException ex)
 				{
-					MessageBox.Show("Автобус не удалось поставить");
+					logger.Warn($"Попытались поставить автобус в заполненный автовокзал");
+					MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
 		/// Обработка нажатия пункта меню "Сохранить"
 		private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+		{
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				if (busStationCollection.SaveData(saveFileDialog.FileName))
+				try
 				{
+					busStationCollection.SaveData(saveFileDialog.FileName);
 					MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					logger.Info("Сохранено в файл " + saveFileDialog.FileName);
 				}
-				else
+				catch (Exception ex)
 				{
-					MessageBox.Show("Не сохранилось", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					logger.Warn("Неудалось сохранить файл по неизвестным причинам");
+					MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
 		/// Обработка нажатия пункта меню "Загрузить"
 		private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+		{
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				if (busStationCollection.LoadData(openFileDialog.FileName))
+				try
 				{
+					busStationCollection.LoadData(openFileDialog.FileName);
 					MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					logger.Info("Загружено из файла " + openFileDialog.FileName);
 					ReloadLevels();
 					Draw();
 				}
-				else
+				catch (FileNotFoundException ex)
 				{
-					MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					logger.Warn($"Попытались загрузить несуществующий файл");
+					MessageBox.Show(ex.Message, "Файл не существует", MessageBoxButtons.OK,
+					MessageBoxIcon.Error);
+				}
+				catch (FormatException ex)
+				{
+					logger.Warn($"Попытались загрузить файл неверного формата");
+					MessageBox.Show(ex.Message, "Файл не соответствует требуемому формату", MessageBoxButtons.OK,
+					MessageBoxIcon.Error);
+				}
+				catch (TypeLoadException ex)
+				{
+					logger.Warn($"Попытка загрузки неизвестного типа объекта");
+					MessageBox.Show(ex.Message, "Неверный тип загружаемого объекта", MessageBoxButtons.OK,
+					MessageBoxIcon.Error);
+				}
+				catch (Exception ex)
+				{
+					logger.Warn("Не удалось загрузить файл по неизвестным причинам");
+					MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}
-    }
+	}
 }
