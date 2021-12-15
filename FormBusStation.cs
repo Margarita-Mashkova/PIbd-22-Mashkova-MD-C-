@@ -143,6 +143,10 @@ namespace MashkovaCar
 					logger.Warn($"Попытались поставить автобус в заполненный автовокзал");
 					MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
+				catch (BusStationAlreadyHaveException ex)
+				{
+					MessageBox.Show(ex.Message, "Дублирование", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 				catch (Exception ex)
 				{
 					MessageBox.Show(ex.Message, "Неизвестная ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -204,6 +208,17 @@ namespace MashkovaCar
 					MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
+		}
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+			if (listBoxBusStations.SelectedIndex > -1)
+			{
+				busStationCollection[listBoxBusStations.SelectedItem.ToString()].Sort();
+				Draw();
+				logger.Info("Сортировка уровней");
+			}
+
 		}
 	}
 }

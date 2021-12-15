@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace MashkovaCar
 {
-	public class AutobusModern : Autobus
+	public class AutobusModern : Autobus, IEquatable<AutobusModern>
 	{
 		public Color DopColor { private set; get; } /// Дополнительный цвет
 		public bool FirstVagon { private set; get; }/// Признак наличия первого вагона
@@ -84,6 +84,43 @@ namespace MashkovaCar
 		public override string ToString()
 		{
 			return $"{base.ToString()}{separator}{DopColor.Name}{separator}{FirstVagon}{separator}{SecondVagon}{separator}{Garmoshka}";
+		}
+		/// Метод интерфейса IEquatable для класса AutobusModern
+		public bool Equals(AutobusModern other)
+		{
+			if (!Equals((Autobus)other))
+            {
+				return false;
+            }
+			if (DopColor != other.DopColor)
+			{
+				return false;
+			}
+			if (SecondVagon != other.SecondVagon)
+			{
+				return false;
+			}
+			if (Garmoshka != other.Garmoshka)
+			{
+				return false;
+			}
+			return true;
+		}
+		/// Перегрузка метода от object
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is AutobusModern autobusObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(autobusObj);
+			}
 		}
 	}
 }

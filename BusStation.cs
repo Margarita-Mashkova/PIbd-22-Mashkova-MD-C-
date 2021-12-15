@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace MashkovaCar
 {
 	/// Параметризованный класс для хранения набора объектов от интерфейса ITransport
-	public class BusStation<T> where T : class, ITransport
+	public class BusStation<T> : IEnumerator<T>, IEnumerable<T> where T : class, ITransport
 	{
 		private readonly List<T> _places;/// Список объектов, которые храним
 		private readonly int _maxCount; /// Максимальное количество мест на парковке автовокзала
@@ -17,6 +13,11 @@ namespace MashkovaCar
 		private readonly int pictureHeight;/// Высота окна отрисовки
 		private readonly int _placeSizeWidth = 210 + 230;/// Размер парковочного места (ширина)
 		private readonly int _placeSizeHeight = 100;/// Размер парковочного места (высота)
+		/// Текущий элемент для вывода через IEnumerator (будет обращаться по своему 
+		/// индексу к ключу словаря, по которму будет возвращаться запись)
+		private int _currentIndex;
+		public T Current => _places[_currentIndex];
+		object IEnumerator.Current => _places[_currentIndex];
 		/// Конструктор
 		public BusStation(int picWidth, int picHeight)
 		{
@@ -26,6 +27,7 @@ namespace MashkovaCar
 			pictureWidth = picWidth;
 			pictureHeight = picHeight;
 			_places = new List<T>();
+			_currentIndex = -1;
 		}
 		/// Перегрузка оператора сложения
 		/// Логика действия: на парковку добавляется автобус
@@ -34,6 +36,10 @@ namespace MashkovaCar
 			if (p._places.Count >= p._maxCount)
 			{
 				throw new BusStationOverflowException();
+			}
+			if (p._places.Contains(autobus)) 
+			{
+				throw new BusStationAlreadyHaveException();
 			}
 			else
 			{
@@ -87,6 +93,38 @@ namespace MashkovaCar
 				return null;
 			}
 			return _places[index];
+		}
+		/// Сортировка автомобилей на парковке
+		public void Sort() => _places.Sort((IComparer<T>)new AutobusComparer());
+		/// Метод интерфейса IEnumerator, вызываемый при удалении объекта
+		public void Dispose()
+		{
+		}
+		/// Метод интерфейса IEnumerator для перехода к следующему элементу или началу коллекции
+		public bool MoveNext()
+		{
+			if ((_currentIndex + 1) >= _places.Count)
+			{
+				Reset();
+				return false;
+			}
+			_currentIndex++;
+			return true;
+		}
+		/// Метод интерфейса IEnumerator для сброса и возврата к началу коллекции
+		public void Reset()
+		{
+			_currentIndex = -1;
+		}
+		/// Метод интерфейса IEnumerable
+		public IEnumerator<T> GetEnumerator()
+		{
+			return this;
+		}
+		/// Метод интерфейса IEnumerable
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return this;
 		}
 	}
 }

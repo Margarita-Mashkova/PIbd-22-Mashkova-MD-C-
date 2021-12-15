@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutobusComparer.cs" />
     <Compile Include="AutobusModern.cs" />
     <Compile Include="Autobus.cs" />
+    <Compile Include="BusStationAlreadyHaveException.cs" />
     <Compile Include="BusStationNotFoundException.cs" />
     <Compile Include="BusStationOverflowException.cs" />
     <Compile Include="Direction.cs" />

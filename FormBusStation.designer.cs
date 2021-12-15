@@ -46,6 +46,7 @@ namespace MashkovaCar
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBoxTakeAutobus.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -61,7 +62,7 @@ namespace MashkovaCar
             // 
             // buttonSetAutobus
             // 
-            this.buttonSetAutobus.Location = new System.Drawing.Point(1393, 338);
+            this.buttonSetAutobus.Location = new System.Drawing.Point(1393, 416);
             this.buttonSetAutobus.Name = "buttonSetAutobus";
             this.buttonSetAutobus.Size = new System.Drawing.Size(143, 48);
             this.buttonSetAutobus.TabIndex = 1;
@@ -74,7 +75,7 @@ namespace MashkovaCar
             this.groupBoxTakeAutobus.Controls.Add(this.buttonTake);
             this.groupBoxTakeAutobus.Controls.Add(this.maskedTextBox);
             this.groupBoxTakeAutobus.Controls.Add(this.labelPlace);
-            this.groupBoxTakeAutobus.Location = new System.Drawing.Point(1393, 417);
+            this.groupBoxTakeAutobus.Location = new System.Drawing.Point(1394, 487);
             this.groupBoxTakeAutobus.Name = "groupBoxTakeAutobus";
             this.groupBoxTakeAutobus.Size = new System.Drawing.Size(142, 95);
             this.groupBoxTakeAutobus.TabIndex = 3;
@@ -177,14 +178,14 @@ namespace MashkovaCar
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
             // загрузитьToolStripMenuItem
             // 
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             this.загрузитьToolStripMenuItem.Click += new System.EventHandler(this.загрузитьToolStripMenuItem_Click);
             // 
@@ -197,11 +198,22 @@ namespace MashkovaCar
             // 
             this.saveFileDialog.Filter = "txt file | *.txt";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(1393, 340);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(143, 48);
+            this.buttonSort.TabIndex = 10;
+            this.buttonSort.Text = "Сортировать";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormBusStation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1562, 712);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonDelBusStation);
             this.Controls.Add(this.buttonAddBusStation);
             this.Controls.Add(this.textBoxBusStationName);
@@ -244,5 +256,6 @@ namespace MashkovaCar
         private System.Windows.Forms.ToolStripMenuItem загрузитьToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Button buttonSort;
     }
 }
