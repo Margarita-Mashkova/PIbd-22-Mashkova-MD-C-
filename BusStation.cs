@@ -97,9 +97,7 @@ namespace MashkovaCar
 		/// Сортировка автомобилей на парковке
 		public void Sort() => _places.Sort((IComparer<T>)new AutobusComparer());
 		/// Метод интерфейса IEnumerator, вызываемый при удалении объекта
-		public void Dispose()
-		{
-		}
+		public void Dispose(){}
 		/// Метод интерфейса IEnumerator для перехода к следующему элементу или началу коллекции
 		public bool MoveNext()
 		{
