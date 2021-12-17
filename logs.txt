@@ -5,31 +5,4 @@
 2021-12-04 13:49:18.1413|INFO|MashkovaCar.FormBusStation|РџРµСЂРµС€Р»Рё РЅР° Р°РІС‚РѕРІРѕРєР·Р°Р» РЈР»СЊСЏРЅРѕРІСЃРєРёР№
 2021-12-04 13:49:24.6057|INFO|MashkovaCar.FormBusStation|Р”РѕР±Р°РІР»РµРЅ Р°РІС‚РѕР±СѓСЃ 100;100;ffff8000
 2021-12-04 13:49:34.7362|INFO|MashkovaCar.FormBusStation|Р”РѕР±Р°РІР»РµРЅ Р°РІС‚РѕР±СѓСЃ 103;100;Purple;Cyan;True;True;True
-2021-12-04 13:49:42.6047|INFO|MashkovaCar.FormBusStation|РР·СЉСЏС‚ Р°РІС‚РѕР±СѓСЃ 100;100;Red СЃ РјРµСЃС‚Р° 02021-12-15 06:02:02.4216|INFO|MashkovaCar.FormBusStation|Добавили автовокзал 5555
-2021-12-15 06:02:02.4766|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал 5555
-2021-12-15 06:02:11.4872|WARN|MashkovaCar.FormBusStation|Попытались взять автобус с несуществующего места на автовокзале 5555
-2021-12-15 06:03:31.1577|INFO|MashkovaCar.FormBusStation|Добавили автовокзал meow
-2021-12-15 06:03:31.2097|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал meow
-2021-12-15 06:07:41.0180|INFO|MashkovaCar.FormBusStation|Добавили автовокзал 555
-2021-12-15 06:07:41.0710|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал 555
-2021-12-15 06:07:45.2873|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Red
-2021-12-15 06:07:50.9296|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Red;Black;True;True;True
-2021-12-15 06:07:52.4217|INFO|MashkovaCar.FormBusStation|Сортировка уровней
-2021-12-15 06:07:55.8269|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Black
-2021-12-15 06:07:57.0869|INFO|MashkovaCar.FormBusStation|Сортировка уровней
-2021-12-15 06:08:07.0105|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Purple
-2021-12-15 06:08:09.0986|INFO|MashkovaCar.FormBusStation|Сортировка уровней
-2021-12-15 06:08:18.4671|INFO|MashkovaCar.FormBusStation|Сортировка уровней
-2021-12-15 06:09:36.2546|INFO|MashkovaCar.FormBusStation|Добавили автовокзал ааа
-2021-12-15 06:09:36.3056|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал ааа
-2021-12-15 06:09:40.8559|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Red
-2021-12-15 06:09:52.8525|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Purple;Red;True;True;True
-2021-12-15 06:09:55.3267|INFO|MashkovaCar.FormBusStation|Сортировка уровней
-2021-12-15 06:10:08.7075|INFO|MashkovaCar.FormBusStation|Добавлен автобус 100;100;Red;Black;True;False;False
-2021-12-15 06:10:27.0115|INFO|MashkovaCar.FormBusStation|Сохранено в файл C:\Users\User\Desktop\ккк.txt
-2021-12-15 06:10:50.7329|INFO|MashkovaCar.FormBusStation|Загружено из файла C:\Users\User\Desktop\est.txt
-2021-12-15 06:10:50.7859|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал 555
-2021-12-15 06:10:53.2160|INFO|MashkovaCar.FormBusStation|Сортировка уровней
-2021-12-15 06:15:54.5692|INFO|MashkovaCar.FormBusStation|Загружено из файла C:\Users\User\Desktop\test.txt
-2021-12-15 06:15:54.5942|INFO|MashkovaCar.FormBusStation|Перешли на автовокзал 555
-2021-12-15 06:15:55.8773|INFO|MashkovaCar.FormBusStation|Сортировка уровней
+2021-12-04 13:49:42.6047|INFO|MashkovaCar.FormBusStation|РР·СЉСЏС‚ Р°РІС‚РѕР±СѓСЃ 100;100;Red СЃ РјРµСЃС‚Р° 0
