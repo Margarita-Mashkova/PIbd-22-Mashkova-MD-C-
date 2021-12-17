@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace MashkovaCar
 {
-	public class Autobus : Vehicle
+	public class Autobus : Vehicle, IEquatable<Autobus>
 	{
 		private readonly int carWidth = 190;/// Ширина отрисовки автобуса
 		private readonly int carHeight = 70;/// Высота отрисовки автобуса
@@ -97,6 +97,47 @@ namespace MashkovaCar
 		public override string ToString()
 		{
 			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.Name}";
+		}
+		/// Метод интерфейса IEquatable для класса Autobus
+		public bool Equals(Autobus other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+		/// Перегрузка метода от object
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is Autobus autobusObj))
+			{
+				return false;
+		    }
+			else
+			{
+				return Equals(autobusObj);
+			}
 		}
 	}
 }

@@ -67,24 +67,19 @@ namespace MashkovaCar
 				{
 					//Начинаем парковку
 					sw.Write($"BusStation{separator}{level.Key}{Environment.NewLine}");
-					ITransport bus = null;
-					for (int i = 0; (bus = level.Value.GetNext(i)) != null; i++)
+					foreach (ITransport bus in level.Value)
 					{
-						if (bus != null)
+						//Записываем тип автобуса
+						if (bus.GetType().Name == "Autobus")
 						{
-							//если место не пустое
-							//Записываем тип машины
-							if (bus.GetType().Name == "Autobus")
-							{
-								sw.Write($"Autobus{separator}");
-							}
-							if (bus.GetType().Name == "AutobusModern")
-							{
-								sw.Write($"AutobusModern{separator}");
-							}
-							//Записываемые параметры
-							sw.Write(bus + Environment.NewLine);
+							sw.Write($"Autobus{separator}");
 						}
+						if (bus.GetType().Name == "AutobusModern")
+						{
+							sw.Write($"AutobusModern{separator}");
+						}
+						//Записываемые параметры
+						sw.Write(bus + Environment.NewLine);
 					}
 				}
 			}
